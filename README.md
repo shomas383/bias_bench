@@ -51,7 +51,7 @@ The commands used in `batch_jobs` produce the results presented in the paper.
 * `export` contains a collection of scripts to format the results into the tables presented in the paper.
 
 ## (Own Note)
-Run `python stereoset_alt.py --model_name_or_path roberta-base` to create the results. It should be stored in the `result/_name_of_model`.
+Run `python stereoset_alt.py --model_name_or_path name_of_huggingface_model` to create the results. It should be stored in the `result/_name_of_model`.
 After obtaining the result, run the `python stereoset_evaluation.py --persistent_dir ../ --predictions_file /_location_of_results`
 
 
