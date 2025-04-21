@@ -153,11 +153,26 @@ class StereoSetRunner:
             else:
                 with torch.no_grad():
                     # Get the probabilities.
-                    output = model(
-                        input_ids,
-                        attention_mask=attention_mask,
-                        token_type_ids=token_type_ids,
-                    )[0].softmax(dim=-1)
+                    with torch.no_grad():
+                    # Get the probabilities.
+                        try:
+                            output = model(
+                                input_ids=input_ids,
+                                attention_mask=attention_mask,
+                                token_type_ids=token_type_ids,
+                            )[0].softmax(dim=-1)
+                        except TypeError:
+                            # For models like DistilBERT that don't accept token_type_ids
+                            output = model(
+                                input_ids=input_ids,
+                                attention_mask=attention_mask,
+                            )[0].softmax(dim=-1)
+
+                    # output = model(
+                    #     input_ids,
+                    #     attention_mask=attention_mask,
+                    #     token_type_ids=token_type_ids,
+                    # )[0].softmax(dim=-1)
 
                 output = output[mask_idxs]
 
