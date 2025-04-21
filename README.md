@@ -50,6 +50,12 @@ The commands used in `batch_jobs` produce the results presented in the paper.
 * To run INLP models against any of the benchmarks, you will first need to run `experiments/inlp_projection_matrix.py`.
 * `export` contains a collection of scripts to format the results into the tables presented in the paper.
 
+##(Own Note)
+Run `python stereoset_alt.py --model_name_or_path roberta-base` to create the results. It should be stored in the `result/_name_of_model`.
+After obtaining the result, run the `python stereoset_evaluation.py --persistent_dir ../ --predictions_file /_location_of_results`
+
+
+
 ## Running on an HPC Cluster
 We provide scripts for running all of the experiments presented in the paper on a SLURM cluster in `batch_jobs`.
 If you plan to use these scripts, make sure you customize `python_job.sh` to run the jobs on your cluster.
